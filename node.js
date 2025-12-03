@@ -783,8 +783,9 @@ app.post("/signupdata", (req, res) => {
 					.find()
 					.sort({ id: -1 })
 					.then((result2) => {
+						const newId = (result2 && result2.length > 0) ? result2[0].id + 1 : 1;
 						const newAccount = new user_model({
-							id: result2[0].id + 1,
+							id: newId,
 							password: data.pwd,
 							name: data.name,
 							email: data.acc,
